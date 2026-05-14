@@ -543,12 +543,8 @@
       }
 
       .gallery {
-        display: flex;
-        gap: 12px;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 10px;
-        scrollbar-width: none;
+        display: grid;
+        gap: 14px;
       }
 
       .gallery::-webkit-scrollbar {
@@ -557,8 +553,6 @@
 
       .proof-card {
         position: relative;
-        flex: 0 0 82%;
-        scroll-snap-align: center;
         border-radius: 24px;
         overflow: hidden;
         background: var(--white);
@@ -567,14 +561,12 @@
 
       .proof-card img {
         width: 100%;
-        height: 260px;
+        height: auto;
+        min-height: 260px;
+        max-height: 420px;
         object-fit: contain;
         background: #fff;
         display: block;
-      }
-
-      .proof-card.sensitive img {
-        filter: blur(1.1px);
       }
 
       .proof-note {
@@ -965,24 +957,24 @@
         <div class="section-title reveal">
           <span class="label">PROOF</span>
           <h2>案例与见证，是信任的底气。</h2>
-          <p>正式公开前建议统一打码处理，保护学生、家长和聊天记录隐私。</p>
+          <p>精选过往录取案例与家长反馈，展示真实服务结果与长期口碑积累。</p>
         </div>
         <div class="gallery">
-          <figure class="proof-card sensitive reveal">
+          <figure class="proof-card reveal">
             <img src="assets/case-01.jpg" alt="往年录取案例截图一" />
-            <figcaption class="proof-note">往年录取案例展示。正式发布建议隐藏姓名、考号、联系方式等信息。</figcaption>
+            <figcaption class="proof-note">往年录取案例展示，覆盖院校、专业与录取结果记录。</figcaption>
           </figure>
-          <figure class="proof-card sensitive reveal">
+          <figure class="proof-card reveal">
             <img src="assets/case-02.jpg" alt="往年录取案例截图二" />
-            <figcaption class="proof-note">案例用于建立可信度，页面中建议保留结果类型，不暴露个人隐私。</figcaption>
+            <figcaption class="proof-note">多组录取案例沉淀，帮助家庭建立更清晰的参考坐标。</figcaption>
           </figure>
-          <figure class="proof-card sensitive reveal">
+          <figure class="proof-card reveal">
             <img src="assets/testimonial-01.jpg" alt="客户见证截图一" />
-            <figcaption class="proof-note">客户反馈截图。建议替换为脱敏后的正式版本。</figcaption>
+            <figcaption class="proof-note">家长反馈节选，记录咨询沟通和录取后的真实评价。</figcaption>
           </figure>
-          <figure class="proof-card sensitive reveal">
+          <figure class="proof-card reveal">
             <img src="assets/testimonial-02.jpg" alt="客户见证截图二" />
-            <figcaption class="proof-note">公开传播时，头像、昵称和聊天对象信息建议打码。</figcaption>
+            <figcaption class="proof-note">服务过程反馈节选，呈现规划后的沟通与跟进效果。</figcaption>
           </figure>
         </div>
       </section>
@@ -1019,7 +1011,7 @@
           </div>
         </div>
         <p class="tiny">
-          温馨提示：页面中的过往案例与服务数据来自现有资料整理，正式投放前建议再次核验数字口径，并对学生及家长隐私信息做脱敏处理。
+          温馨提示：页面素材来自乐太学教育现有正式资料，具体服务内容以实际咨询沟通为准。
         </p>
       </section>
 
