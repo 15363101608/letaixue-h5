@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08224a" />
+    <title>乐太学教育 | 高考志愿填报与学业规划</title>
+    <style>
+      :root {
+        --navy: #08224a;
+        --navy-2: #0d376d;
+        --blue: #1e63b6;
+        --gold: #d7a849;
+        --gold-2: #f3d58b;
+        --ink: #17233d;
+        --muted: #6c7891;
+        --paper: #fffaf0;
+        --white: #ffffff;
+        --line: rgba(9, 39, 82, 0.12);
+        --shadow: 0 18px 44px rgba(5, 25, 58, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 10%, rgba(243, 213, 139, 0.24), transparent 28%),
+          radial-gradient(circle at 86% 8%, rgba(30, 99, 182, 0.3), transparent 36%),
+          linear-gradient(135deg, #031226 0%, #09214b 48%, #07152e 100%);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .phone-shell {
+        width: min(100%, 452px);
+        min-height: 100vh;
+        margin: 0 auto;
+        background: #fffdf8;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 28px 80px rgba(0, 0, 0, 0.32);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+        color: var(--white);
+        background: rgba(8, 34, 74, 0.88);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand-mini {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+      }
+
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        background: linear-gradient(135deg, #fff, var(--gold-2));
+        font-size: 15px;
+        box-shadow: inset 0 0 0 1px rgba(215, 168, 73, 0.45);
+      }
+
+      .topbar a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: #fff7de;
+        background: rgba(215, 168, 73, 0.16);
+        border: 1px solid rgba(243, 213, 139, 0.42);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 760px;
+        color: var(--white);
+        padding: 28px 22px 28px;
+        background: var(--navy);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(4, 20, 45, 0.42), rgba(4, 20, 45, 0.92) 64%),
+          url("assets/campus-front.jpg") center top / cover no-repeat;
+        transform: scale(1.04);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -20% -20% -20%;
+        height: 380px;
+        background: radial-gradient(ellipse at center, rgba(243, 213, 139, 0.2), transparent 64%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        min-height: 676px;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .eyebrow {
+        width: fit-content;
+        margin-bottom: 14px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        color: #fff2c7;
+        border: 1px solid rgba(243, 213, 139, 0.42);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 390px;
+        font-size: clamp(43px, 12vw, 58px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero-lead {
+        margin-top: 16px;
+        max-width: 360px;
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .btn {
+        min-height: 48px;
+        border: 0;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 16px;
+        font-weight: 850;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        color: #14213d;
+        background: linear-gradient(135deg, #fff3c4, var(--gold));
+        box-shadow: 0 14px 28px rgba(215, 168, 73, 0.28);
+      }
+
+      .btn-secondary {
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+        margin-top: 22px;
+      }
+
+      .stat {
+        min-height: 82px;
+        padding: 12px 10px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.11);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(14px);
+      }
+
+      .stat b {
+        display: block;
+        color: var(--gold-2);
+        font-size: 22px;
+        line-height: 1.1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      section {
+        padding: 42px 20px;
+      }
+
+      .section-dark {
+        color: var(--white);
+        background:
+          radial-gradient(circle at 20% 0%, rgba(243, 213, 139, 0.14), transparent 30%),
+          linear-gradient(180deg, #081d3e, #07172f);
+      }
+
+      .section-cream {
+        background: linear-gradient(180deg, #fffdf8 0%, #fff8eb 100%);
+      }
+
+      .section-title {
+        display: grid;
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+
+      .section-title .label {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+        line-height: 1.16;
+        letter-spacing: 0;
+      }
+
+      .section-title p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.72;
+      }
+
+      .section-dark .section-title p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .trust-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .trust-card {
+        position: relative;
+        padding: 18px 18px 18px 58px;
+        border-radius: 22px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        box-shadow: 0 12px 28px rgba(8, 34, 74, 0.08);
+      }
+
+      .trust-card::before {
+        content: attr(data-no);
+        position: absolute;
+        left: 16px;
+        top: 18px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        background: #f7e6b4;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .trust-card h3 {
+        font-size: 18px;
+      }
+
+      .trust-card p {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .teacher-carousel {
+        display: grid;
+        gap: 14px;
+      }
+
+      .teacher-track {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        padding: 4px 0 10px;
+      }
+
+      .teacher-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .teacher-card {
+        flex: 0 0 84%;
+        scroll-snap-align: center;
+        border-radius: 28px;
+        overflow: hidden;
+        color: var(--white);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: var(--shadow);
+      }
+
+      .teacher-photo {
+        height: 286px;
+        background: #eef3fb;
+        overflow: hidden;
+      }
+
+      .teacher-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+
+      .teacher-info {
+        padding: 18px;
+      }
+
+      .teacher-info h3 {
+        font-size: 22px;
+      }
+
+      .teacher-role {
+        margin-top: 5px;
+        color: var(--gold-2);
+        font-weight: 850;
+        font-size: 14px;
+      }
+
+      .teacher-info p {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        padding: 6px 9px;
+        border-radius: 999px;
+        color: #fff6dd;
+        background: rgba(243, 213, 139, 0.14);
+        border: 1px solid rgba(243, 213, 139, 0.22);
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .carousel-controls {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: 0;
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .dot.active {
+        width: 28px;
+        border-radius: 999px;
+        background: var(--gold-2);
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .service {
+        min-height: 142px;
+        padding: 16px;
+        border-radius: 22px;
+        color: var(--white);
+        background: linear-gradient(145deg, #0d376d, #081f45);
+        box-shadow: 0 14px 28px rgba(8, 34, 74, 0.12);
+      }
+
+      .service .num {
+        color: var(--gold-2);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .service h3 {
+        margin-top: 14px;
+        font-size: 18px;
+        line-height: 1.3;
+      }
+
+      .service p {
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .process {
+        display: grid;
+        gap: 10px;
+      }
+
+      .process-step {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 16px;
+        border-radius: 22px;
+        background: var(--white);
+        border: 1px solid var(--line);
+      }
+
+      .process-step b {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        background: linear-gradient(135deg, #f8e7b7, #fff6db);
+      }
+
+      .process-step h3 {
+        font-size: 17px;
+      }
+
+      .process-step p {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .gallery {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+        scrollbar-width: none;
+      }
+
+      .gallery::-webkit-scrollbar {
+        display: none;
+      }
+
+      .proof-card {
+        position: relative;
+        flex: 0 0 82%;
+        scroll-snap-align: center;
+        border-radius: 24px;
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .proof-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: contain;
+        background: #fff;
+        display: block;
+      }
+
+      .proof-card.sensitive img {
+        filter: blur(1.1px);
+      }
+
+      .proof-note {
+        padding: 14px 15px;
+        color: rgba(255, 255, 255, 0.78);
+        background: rgba(4, 16, 36, 0.92);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .campus-card {
+        position: relative;
+        min-height: 356px;
+        border-radius: 30px;
+        overflow: hidden;
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .campus-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .campus-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 28%, rgba(4, 18, 42, 0.9));
+      }
+
+      .campus-copy {
+        position: absolute;
+        z-index: 1;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .campus-copy h3 {
+        font-size: 24px;
+      }
+
+      .campus-copy p {
+        margin-top: 9px;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.65;
+        font-size: 14px;
+      }
+
+      .cta {
+        color: var(--white);
+        padding-bottom: 96px;
+        background:
+          radial-gradient(circle at 74% 12%, rgba(243, 213, 139, 0.22), transparent 32%),
+          linear-gradient(180deg, #09214b, #061228);
+      }
+
+      .qr-panel {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 16px;
+        align-items: center;
+        padding: 18px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .qr-panel img {
+        width: 132px;
+        height: 132px;
+        padding: 8px;
+        border-radius: 18px;
+        background: var(--white);
+      }
+
+      .qr-panel h3 {
+        font-size: 20px;
+      }
+
+      .qr-panel p {
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .contact-item {
+        padding: 15px 16px;
+        border-radius: 18px;
+        color: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .contact-item b {
+        display: block;
+        color: var(--gold-2);
+        margin-bottom: 3px;
+      }
+
+      .sticky-cta {
+        position: sticky;
+        bottom: 0;
+        z-index: 25;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+        background: rgba(255, 253, 248, 0.92);
+        border-top: 1px solid rgba(8, 34, 74, 0.12);
+        backdrop-filter: blur(16px);
+      }
+
+      .sticky-cta .btn-secondary {
+        color: var(--navy);
+        border-color: rgba(8, 34, 74, 0.16);
+        background: #fff;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .tiny {
+        margin-top: 18px;
+        color: rgba(255, 255, 255, 0.52);
+        font-size: 11px;
+        line-height: 1.55;
+      }
+
+      @media (min-width: 720px) {
+        body {
+          padding: 28px 0;
+        }
+
+        .phone-shell {
+          min-height: calc(100vh - 56px);
+          border-radius: 34px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone-shell">
+      <nav class="topbar">
+        <div class="brand-mini">
+          <span class="brand-mark">乐</span>
+          <span>乐太学教育</span>
+        </div>
+        <a href="#consult">预约咨询</a>
+      </nav>
+
+      <header class="hero">
+        <div class="hero-content">
+          <div class="eyebrow reveal">永州本地十年教育品牌</div>
+          <h1 class="reveal">高考志愿填报<br />与学业规划</h1>
+          <p class="hero-lead reveal">
+            不只帮孩子填志愿，更从学业、专业、职业和成长状态出发，陪家庭做一次更安心的升学选择。
+          </p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#consult">立即咨询</a>
+            <a class="btn btn-secondary" href="#teachers">查看老师</a>
+          </div>
+          <div class="hero-stats reveal">
+            <div class="stat"><b>10年</b><span>本土深耕<br />更懂永州家庭</span></div>
+            <div class="stat"><b>1000+</b><span>升学规划<br />服务案例</span></div>
+            <div class="stat"><b>1v1</b><span>沟通诊断<br />定制方案</span></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section-cream">
+        <div class="section-title reveal">
+          <span class="label">WHY US</span>
+          <h2>家长需要的不是热闹，而是安心。</h2>
+          <p>
+            志愿填报不是简单挑学校。它关系到分数利用、专业适配、未来就业、家庭沟通和风险控制。
+          </p>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-card reveal" data-no="01">
+            <h3>本地化经验</h3>
+            <p>长期服务永州家庭，更熟悉本地学生学习状态、家长关注点和升学咨询场景。</p>
+          </article>
+          <article class="trust-card reveal" data-no="02">
+            <h3>多老师协同</h3>
+            <p>覆盖志愿填报、学业规划、生涯指导、家校共育和心理沟通等多个维度。</p>
+          </article>
+          <article class="trust-card reveal" data-no="03">
+            <h3>全过程陪伴</h3>
+            <p>从前期沟通、院校专业分析，到方案确认和录取跟进，减少家庭的信息焦虑。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="teachers" class="section-dark">
+        <div class="section-title reveal">
+          <span class="label">TEACHER TEAM</span>
+          <h2>把复杂选择，讲到家庭能听懂。</h2>
+          <p>每位老师不只看分数，也关注孩子的性格、兴趣、学习动力和长期发展。</p>
+        </div>
+
+        <div class="teacher-carousel">
+          <div class="teacher-track" id="teacherTrack" aria-label="老师介绍轮播">
+            <article class="teacher-card">
+              <div class="teacher-photo"><img src="assets/teacher-dada.jpg" alt="达达老师" /></div>
+              <div class="teacher-info">
+                <h3>达达老师</h3>
+                <div class="teacher-role">资深教育专家</div>
+                <p>13 年教育经验，擅长孩子沟通、天赋发现、学习动力激发和家庭教育指导。</p>
+                <div class="tags">
+                  <span class="tag">高级教育规划师</span><span class="tag">心理咨询</span><span class="tag">生涯指导</span>
+                </div>
+              </div>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-photo"><img src="assets/teacher-li.jpg" alt="李老师" /></div>
+              <div class="teacher-info">
+                <h3>李老师</h3>
+                <div class="teacher-role">家校共育专家</div>
+                <p>深耕家校共育领域，擅长教务管理、家长沟通和学习过程陪伴。</p>
+                <div class="tags">
+                  <span class="tag">家校协作</span><span class="tag">教务管理</span><span class="tag">细节护航</span>
+                </div>
+              </div>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-photo"><img src="assets/teacher-jijun.jpg" alt="吉军老师" /></div>
+              <div class="teacher-info">
+                <h3>吉军老师</h3>
+                <div class="teacher-role">资深高考志愿填报专家</div>
+                <p>深耕升学规划，熟悉多元升学路径，关注志愿、学业发展和未来就业的整体连接。</p>
+                <div class="tags">
+                  <span class="tag">多元升学</span><span class="tag">学业规划</span><span class="tag">志愿填报</span>
+                </div>
+              </div>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-photo"><img src="assets/teacher-jin.jpg" alt="金老师" /></div>
+              <div class="teacher-info">
+                <h3>金老师</h3>
+                <div class="teacher-role">首席志愿填报专家</div>
+                <p>硕士研究生，实战型导师，擅长新高考志愿逻辑、专业适配和冲稳保方案设计。</p>
+                <div class="tags">
+                  <span class="tag">新高考逻辑</span><span class="tag">专业适配</span><span class="tag">风险规避</span>
+                </div>
+              </div>
+            </article>
+            <article class="teacher-card">
+              <div class="teacher-photo"><img src="assets/teacher-zhao.jpg" alt="赵老师" /></div>
+              <div class="teacher-info">
+                <h3>赵老师</h3>
+                <div class="teacher-role">资深升学规划专家</div>
+                <p>211 高校硕士，熟悉新高考政策、赋分规则和志愿录取逻辑，注重稳妥规划。</p>
+                <div class="tags">
+                  <span class="tag">政策解读</span><span class="tag">文科经管</span><span class="tag">梯度优化</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="carousel-controls" id="teacherDots" aria-label="轮播指示"></div>
+        </div>
+      </section>
+
+      <section class="section-cream">
+        <div class="section-title reveal">
+          <span class="label">SERVICES</span>
+          <h2>从分数到未来，做一套可执行方案。</h2>
+          <p>适合高三志愿填报家庭，也适合高一高二提前做选科、专业和生涯方向规划。</p>
+        </div>
+        <div class="services">
+          <article class="service reveal">
+            <span class="num">01</span>
+            <h3>高考志愿填报</h3>
+            <p>1v1 沟通，结合分数、位次、兴趣和家庭期待定制方案。</p>
+          </article>
+          <article class="service reveal">
+            <span class="num">02</span>
+            <h3>院校专业分析</h3>
+            <p>拆解院校层次、专业方向、就业前景和培养特点。</p>
+          </article>
+          <article class="service reveal">
+            <span class="num">03</span>
+            <h3>生涯学业规划</h3>
+            <p>帮助孩子把当下学习、大学专业和未来职业连接起来。</p>
+          </article>
+          <article class="service reveal">
+            <span class="num">04</span>
+            <h3>内动力与习惯</h3>
+            <p>围绕学习习惯、亲子沟通和目标感，提供成长支持。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-cream">
+        <div class="section-title reveal">
+          <span class="label">PROCESS</span>
+          <h2>一次咨询，应该有清晰流程。</h2>
+          <p>让家长知道每一步在做什么，也让孩子参与到自己的选择里。</p>
+        </div>
+        <div class="process">
+          <article class="process-step reveal">
+            <b>1</b>
+            <div><h3>初步诊断</h3><p>了解成绩位次、选科组合、兴趣方向、家庭诉求和风险偏好。</p></div>
+          </article>
+          <article class="process-step reveal">
+            <b>2</b>
+            <div><h3>方案设计</h3><p>围绕院校、专业、城市、就业和录取概率做综合筛选。</p></div>
+          </article>
+          <article class="process-step reveal">
+            <b>3</b>
+            <div><h3>家庭沟通</h3><p>把专业逻辑讲清楚，让孩子和家长在同一个信息面上做决定。</p></div>
+          </article>
+          <article class="process-step reveal">
+            <b>4</b>
+            <div><h3>录取跟进</h3><p>持续关注填报节点、录取进展和后续入学准备。</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-dark">
+        <div class="section-title reveal">
+          <span class="label">PROOF</span>
+          <h2>案例与见证，是信任的底气。</h2>
+          <p>正式公开前建议统一打码处理，保护学生、家长和聊天记录隐私。</p>
+        </div>
+        <div class="gallery">
+          <figure class="proof-card sensitive reveal">
+            <img src="assets/case-01.jpg" alt="往年录取案例截图一" />
+            <figcaption class="proof-note">往年录取案例展示。正式发布建议隐藏姓名、考号、联系方式等信息。</figcaption>
+          </figure>
+          <figure class="proof-card sensitive reveal">
+            <img src="assets/case-02.jpg" alt="往年录取案例截图二" />
+            <figcaption class="proof-note">案例用于建立可信度，页面中建议保留结果类型，不暴露个人隐私。</figcaption>
+          </figure>
+          <figure class="proof-card sensitive reveal">
+            <img src="assets/testimonial-01.jpg" alt="客户见证截图一" />
+            <figcaption class="proof-note">客户反馈截图。建议替换为脱敏后的正式版本。</figcaption>
+          </figure>
+          <figure class="proof-card sensitive reveal">
+            <img src="assets/testimonial-02.jpg" alt="客户见证截图二" />
+            <figcaption class="proof-note">公开传播时，头像、昵称和聊天对象信息建议打码。</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section-cream">
+        <div class="campus-card reveal">
+          <img src="assets/reception.jpg" alt="乐太学教育接待空间" />
+          <div class="campus-copy">
+            <h3>面对面沟通，让选择更踏实。</h3>
+            <p>在重要升学节点，家长需要的不只是资料，而是一位能把利弊讲清楚、把流程陪到底的专业老师。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="consult" class="cta">
+        <div class="section-title reveal">
+          <span class="label">CONSULT</span>
+          <h2>预约一对一志愿评估</h2>
+          <p>扫码添加微信，发送孩子年级、选科、分数或位次，老师会先帮你判断适合从哪一步开始。</p>
+        </div>
+        <div class="qr-panel reveal">
+          <img src="assets/wechat-qr.jpg" alt="微信咨询二维码" />
+          <div>
+            <h3>微信同号咨询</h3>
+            <p>保存页面后可长按识别二维码，也可以直接拨打下方电话。</p>
+          </div>
+        </div>
+        <div class="contact-list reveal">
+          <a class="contact-item" href="tel:17346971099"><b>咨询热线一</b>173 4697 1099</a>
+          <a class="contact-item" href="tel:19397769855"><b>咨询热线二</b>193 9776 9855</a>
+          <div class="contact-item">
+            <b>服务地址</b>
+            湖南省永州市零陵区，一中正对面智学通，竹城花园二期一栋智学通乐太学天才学业规划中心
+          </div>
+        </div>
+        <p class="tiny">
+          温馨提示：页面中的过往案例与服务数据来自现有资料整理，正式投放前建议再次核验数字口径，并对学生及家长隐私信息做脱敏处理。
+        </p>
+      </section>
+
+      <div class="sticky-cta">
+        <a class="btn btn-secondary" href="tel:17346971099">电话咨询</a>
+        <a class="btn btn-primary" href="#consult">添加微信</a>
+      </div>
+    </main>
+
+    <script>
+      const revealItems = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      revealItems.forEach((item) => observer.observe(item));
+
+      const track = document.querySelector("#teacherTrack");
+      const cards = Array.from(track.querySelectorAll(".teacher-card"));
+      const dotsWrap = document.querySelector("#teacherDots");
+      cards.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `查看第 ${index + 1} 位老师`);
+        dot.addEventListener("click", () => {
+          cards[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        });
+        dotsWrap.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsWrap.children);
+      const setActiveDot = () => {
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let active = 0;
+        let minDistance = Infinity;
+        cards.forEach((card, index) => {
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const distance = Math.abs(center - cardCenter);
+          if (distance < minDistance) {
+            active = index;
+            minDistance = distance;
+          }
+        });
+        dots.forEach((dot, index) => dot.classList.toggle("active", index === active));
+      };
+      track.addEventListener("scroll", () => requestAnimationFrame(setActiveDot), { passive: true });
+      setActiveDot();
+    </script>
+  </body>
+</html>
